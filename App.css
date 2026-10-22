@@ -1,0 +1,75 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { background-color: #f0f2f5; color: #333; }
+
+/* YC6: Responsive Layout */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Mặc định mobile xếp dọc */
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row; /* Tablet/Desktop xếp 2 cột */
+  }
+}
+
+/* Cột danh sách thành phố */
+.sidebar {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+@media (min-width: 768px) {
+  .sidebar { width: 300px; min-height: 100vh; }
+}
+
+.city-item {
+  padding: 12px; margin-bottom: 8px;
+  background: #f8f9fa; border-radius: 6px;
+  cursor: pointer; transition: 0.2s;
+}
+.city-item:hover { background: #e2e8f0; }
+
+/* YC1: Làm nổi bật thành phố đang chọn */
+.city-item.active { background: #3b82f6; color: white; font-weight: bold; }
+
+/* Nút đổi nhiệt độ (YC5) */
+.unit-toggle { margin-bottom: 20px; display: flex; gap: 10px; }
+.unit-toggle button {
+  padding: 8px 16px; cursor: pointer;
+  border: 1px solid #ccc; border-radius: 4px; background: white;
+}
+.unit-toggle button.active-unit { background: #333; color: white; }
+
+/* Cột nội dung chính */
+.main-content { flex: 1; padding: 20px; }
+
+/* Trạng thái UI (YC4) */
+.status-msg { text-align: center; padding: 50px; font-size: 1.2rem; color: #666; }
+.btn-retry { margin-top: 10px; padding: 10px 20px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; }
+
+/* YC2: Thời tiết hiện tại */
+.current-weather {
+  background: white; padding: 20px; border-radius: 8px;
+  margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.current-icon { font-size: 4rem; }
+.current-temp { font-size: 3rem; font-weight: bold; margin: 10px 0; }
+.current-details { display: flex; justify-content: center; gap: 20px; color: #555; margin-top: 15px;}
+
+/* YC3: Dự báo 7 ngày */
+.forecast-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+.forecast-card {
+  background: white; padding: 15px; border-radius: 8px;
+  text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.forecast-card .date { font-size: 0.9rem; color: #666; }
+.forecast-card .icon { font-size: 2rem; margin: 10px 0; }
+.forecast-card .temps { font-weight: bold; }
